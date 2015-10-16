@@ -5,4 +5,12 @@ export default function HomeController (StepService) {
         this.steps = steps
     }.bind(this))
 
+    this.sortBy = function (value) {
+    if (this.predicate === value) {
+      this.reverse = !this.reverse
+    } else {
+      this.predicate = value;
+      this.reverse = false
+    }
+  }
 }

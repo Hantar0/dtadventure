@@ -1,17 +1,25 @@
+<div class="form-group">
+    <label for="search">Recherche :</label>    
+    <input type="search" class="form-control" ng-model="query">
+</div>
+<br>
 <table>
     <thead>
         <tr>
-            <th>Nom</th>
+            <th><a href="" ng-click="ctrl.sortBy('name')">Nom</a></th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="step in ctrl.steps track by $index">
+        <tr ng-repeat="step in ctrl.steps | orderBy:ctrl.predicate:ctrl.reverse
+        |  filter:{name:query} track by $index">
             <td>{{ step.name }}</td>
             <td>
-                <a ng-href="">Edit</a>
-                <a ng-href="#/play/{{ step.id }}">Start !</a>
+                <a ng-href="#/edit/{{ step.id }}">Edit</a>
+                <a ng-href="#/play/{{ step.id }}" ng-show="step.start">Start !</a>
             </td>
         </tr>
     </tbody>
 </table>
+
+<a ng-href="#/add">Ajouter un step</a>

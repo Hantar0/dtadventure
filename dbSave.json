@@ -33,13 +33,6 @@
           "params": {
             "step": 4
           }
-        },
-        {
-          "type": "go",
-          "name": "Passer la 3ème porte",
-          "params": {
-            "step": "5"
-          }
         }
       ]
     },
@@ -53,8 +46,7 @@
           "name": "Ouvrez le coffre",
           "params": {
             "life": 0,
-            "gold": 100,
-            "usable": "1"
+            "gold": 100
           }
         },
         {
@@ -75,44 +67,18 @@
           "type": "fight",
           "name": "Combattez le dragon",
           "params": {
-            "life": "-10",
-            "gold": "500",
-            "battleTime": "4",
-            "creatureName": "un dragon"
+            "life": -10,
+            "gold": 1000
           }
         },
         {
           "type": "go",
           "name": "Sortez",
           "params": {
-            "step": "2"
+            "step": 2
           }
         }
       ]
-    },
-    {
-      "name": "Boutique",
-      "description": "Bienvenue dans la boutique. Achetez 1 potion pour 100 pos ?",
-      "start": false,
-      "actions": [
-        {
-          "type": "buy",
-          "name": "Acheter potion",
-          "params": {
-            "life": 0,
-            "gold": "-100",
-            "potion": 1
-          }
-        },
-        {
-          "type": "go",
-          "name": "Sortez",
-          "params": {
-            "step": "2"
-          }
-        }
-      ],
-      "id": 5
     }
   ]
 }

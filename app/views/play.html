@@ -1,6 +1,7 @@
 <div>
     <strong>OR</strong> {{ ctrl.user.gold }}
     <strong>LIFE</strong> {{ ctrl.user.life }}
+    <strong>POTION</strong> {{ ctrl.user.potion }}
 </div>
 
 <h4>{{ ctrl.step.name }}</h4>
@@ -9,4 +10,5 @@
     <li ng-repeat="action in ctrl.step.actions track by $index">
         <a href="" ng-click="ctrl.selectAction(action)">{{ action.name }}</a>
     </li>
+    <li ng-show="ctrl.user.potion>0"><a href=""  ng-click="ctrl.selectAction(ctrl.drinkPotion)" >Boire potion</a></li>
 </ul>

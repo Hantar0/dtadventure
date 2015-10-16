@@ -13,6 +13,22 @@ export default function configuration ($routeProvider) {
         controller: 'PlayStepController',
         controllerAs: 'ctrl'
     })
+    
+    .when('/edit/:id', {
+        templateUrl: 'views/edit.html',
+        controller: 'EditStepController',
+        controllerAs: 'ctrl'
+    })
+    
+    .when('/add', {        
+        templateUrl: 'views/edit.html',
+        controller: 'EditStepController',
+        controllerAs: 'ctrl'
+    })    
+    
+    .when('/death', {         
+        templateUrl: 'views/death.html'
+    })    
 
     .otherwise({
         redirectTo: '/'

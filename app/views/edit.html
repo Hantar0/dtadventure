@@ -1,0 +1,117 @@
+<form name="ctrl.stepForm" ng-submit="stepCtrl.saveForm()" novalidate>
+
+	<!-- Informations sur le step -->
+	<div class="form-inline">
+		<div class="form-group">
+			<label for="name">Name :*</label>
+			<input id="name" type="name" class="form-control" ng-model="ctrl.step.name" required>
+		</div>
+
+		<div class="form-group">
+			<label for="description">Description :</label>
+			<textarea id="description" name="description" ng-model="ctrl.step.description" class="form-control"></textarea>
+		</div>
+
+		<div class="form-group">
+			<label for="start">Start :</label>
+			<input id="start" type="checkbox" ng-model="ctrl.step.start" class="form-control col-sm-4">
+		</div>
+	</div>
+	<br>
+
+	<!-- Informations sur les actions du step -->
+	<h2> Actions : </h2>
+	<div ng-repeat="action in ctrl.step.actions">
+		<h4> Action : </h4>
+		<div class="form-inline">
+			<div class="form-group  col-sm-3">
+				<label for="nameAction">Name :*</label>
+				<input type="nameAction" class="form-control" ng-model="action.name" required>
+			</div>
+			<div class="form-group">
+				<label for="typeAction">Type action :*</label>
+				<select ng-model="action.type" ng-options="act for act in ctrl.actions" name="typeAction" class="form-control" required>
+				</select>
+			</div>
+		</div>
+		<br>
+
+
+		<!-- Informations sur les paramètres d'une action -->
+		<h4> Parameters : </h4>
+		<div class="form-inline">
+			<div ng-repeat="(key, value) in action.params">
+				<div class="form-group  col-sm-3">
+					<label for="typeParam">Type param :</label>
+					<label name="typeParam">{{key}}</label>
+				</div>
+
+				<div class="form-group">
+					<label for="valueParams">Value :*</label>
+					<input ng-model="action.params[key]" id="valueParams" type="valueParams" class="form-control" required>
+				</div>
+				<button type="button" ng-click="ctrl.deleteParam(action,key)">Delete param</button>
+				<br>
+			</div>
+		</div>
+		<br>
+
+		<!-- Ajout d'un paramètre -->
+		<div class="form-inline">
+			<div class="form-group  col-sm-10">
+				<a href="" ng-click="ctrl.showAddParam()">Add param</a>
+			</div>
+			<div class="form-group  col-sm-3">
+				<label for="typeParam" ng-show="ctrl.showAddPara">Type param :*</label>
+				<select ng-model="ctrl.paramAdd" ng-options="act for act in ctrl.params" name="typeParam" ng-show="ctrl.showAddPara" class="form-control ">
+				</select>
+			</div>
+
+			<div class="form-group ">
+				<label for="valueParams " ng-show="ctrl.showAddPara ">Value :*</label>
+				<input ng-model="ctrl.valueParamAdd" id="valueParams" type="valueParams" class="form-control" ng-show="ctrl.showAddPara">
+			</div>
+			<div class="form-group">
+				<button type="button" ng-click="ctrl.addParam(action)" ng-show="ctrl.showAddPara">Add param</button>
+			</div>
+			<br>
+
+			<div class="form-group">
+				<button type="button" ng-click="ctrl.removeAction($index)">Remove action</button>
+			</div>
+
+		</div>
+	</div>
+	<br>
+
+	<!-- Ajout d'une action -->
+	<div class="form-inline">
+		<div class="form-group  col-sm-12">
+			<a href="" ng-click="ctrl.showAddAction() ">Add action</a>
+		</div>
+		<div class="form-group  col-sm-3">
+			<label for="newNameAction" ng-show="ctrl.showAddAct">Name :*</label>
+			<input type="newNameAction" class="form-control" ng-model="ctrl.valueActionAdd" ng-show="ctrl.showAddAct">
+		</div>
+		<div class="form-group">
+			<label for="newTypeAction" ng-show="ctrl.showAddAct">Type action :*</label>
+			<select ng-model="ctrl.actionAdd" ng-options="act for act in ctrl.actions" name="newTypeAction" ng-show="ctrl.showAddAct"
+			" class="form-control ">
+		</select>
+	</div>
+	<div class="form-group ">
+		<button type="button " ng-click="ctrl.addAction() " ng-show="ctrl.showAddAct ">Add action</button>
+	</div>
+	</div>
+	<br>
+	
+	<!-- Sauvegarde sur le serveur du formulaire -->
+	<div class="form-group ">
+		<button type="submit " ng-click="ctrl.saveForm() ">Save step</button>
+	</div>
+
+	<!-- Suppression sur le serveur du step -->
+	<div class="form-group ">
+		<button type="button " ng-click="ctrl.delete() ">Delete step</button>
+	</div>
+</form>
